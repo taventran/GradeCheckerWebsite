@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import FinalsCheckers from './components/finals-checker';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header">        
       </header>
+      <div>
+        {/* <button className="choose">Final Grade Checker</button>
+        <button className="choose">Grade Predictor</button> */}
+      </div>
+      <div className="Finals">
+        <h1>Final Grade Checker</h1>
+        <FinalsCheckers></FinalsCheckers>
+      </div>
     </div>
   );
+
 }
 
 export default App;
