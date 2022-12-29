@@ -24,10 +24,14 @@ function App() {
       <header className="App-header">        
       </header>
       <div>
+        {display === null  &&
+          <h1 style={{color:"white"}}>Choose an option</h1>
+        }
         <button className="choose" onClick={clickGradeChecker}>Grade Checker</button>
         <button className="choose" onClick={clickFinalChecker}>Final Grade Checker</button>
       </div>
       <div>
+
         {display}
       </div>
     </div>
