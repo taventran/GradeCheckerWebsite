@@ -48,6 +48,15 @@ table {
 }
 
 
+.icon {
+  padding-right: 20px;
+}
+
+.icon2 {
+  padding-right: 20px;
+}
+
+
 
 .icon:hover {
   color: #5f150a;

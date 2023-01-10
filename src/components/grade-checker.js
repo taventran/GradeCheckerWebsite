@@ -129,7 +129,7 @@ function GradeChecker() {
             <div className="Criteria">
                 <hr/>
                 <h3>
-                    Grading Criteria
+                    Criteria
                  </h3>
                 
                     {criterias.map(criteria => {
@@ -138,10 +138,10 @@ function GradeChecker() {
                                 <table>
                                     <tbody>
                                         <tr className="tableText">
-                                        
+                                        <FontAwesomeIcon className="icon" icon={faTrash} onClick= {() => removeClicked(criteria.id)} />
                                         <th className="tableText"> {criteria.name}:&nbsp; </th>
                                         <td className="tableText">    {criteria.weight}% </td>
-                                        <FontAwesomeIcon className="icon" icon={faTrash} onClick= {() => removeClicked(criteria.id)} />
+                                        
                                         </tr>
                                     </tbody>
                                 </table>
