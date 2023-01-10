@@ -16,11 +16,11 @@ function GradeChecker() {
     const [gradeAverage, setGradeAverage] = useState("");
     const [doneAddingGrades, setDoneAddingGrades] = useState(false);
     const [currentAverage, setCurrentAverage] = useState(0);
-    const [newGrade, setNewGrade] = useState("");
-    const [currentCriteria, setCurrentCriteria] = useState("");
-    const [numOfAssignments, setNumOfAssignments] = useState("");
+    // const [newGrade, setNewGrade] = useState("");
+    // const [currentCriteria, setCurrentCriteria] = useState("");
+    // const [numOfAssignments, setNumOfAssignments] = useState("");
 
-    const [predictedGrade, setPredictedGrade] = useState(0);
+    // const [predictedGrade, setPredictedGrade] = useState(0);
 
     useEffect(() => {
         getCurrentAverage();
@@ -91,18 +91,18 @@ function GradeChecker() {
         setCurrentAverage(overallGrade/overallWeight * 100);
     }
 
-    function updateGrade() {
-        console.log(newGrade);
-        console.log(currentCriteria);
-        const tempCriterias = criterias.find((criterias) => criterias.name === currentCriteria);
-        const holdCriteria = tempCriterias[0];
+    // function updateGrade() {
+    //     console.log(newGrade);
+    //     console.log(currentCriteria);
+    //     const tempCriterias = criterias.find((criterias) => criterias.name === currentCriteria);
+    //     const holdCriteria = tempCriterias[0];
        
-        const newAvg = holdCriteria.grade + (newGrade - holdCriteria.grade)/numOfAssignments;
+    //     const newAvg = holdCriteria.grade + (newGrade - holdCriteria.grade)/numOfAssignments;
 
-        console.log(newAvg)
+    //     console.log(newAvg)
         
 
-    }
+    // }
 
     return <React.Fragment>
         { doneAddingCriteria === false &&
