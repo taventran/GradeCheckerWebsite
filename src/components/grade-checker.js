@@ -43,14 +43,14 @@ function GradeChecker() {
         }
     }
 
-    function doneGrades() {
-        if (doneAddingGrades === false) {
-            setDoneAddingGrades(true);
-        }
-        else {
-            setDoneAddingGrades(false);
-        }
-    }
+    // function doneGrades() {
+    //     if (doneAddingGrades === false) {
+    //         setDoneAddingGrades(true);
+    //     }
+    //     else {
+    //         setDoneAddingGrades(false);
+    //     }
+    // }
 
     const removeClicked = criteriaID => {
         const newCriterias = criterias.filter((criterias) => criterias.id !== criteriaID);
@@ -116,16 +116,22 @@ function GradeChecker() {
                 <br/>
                 <br/>
                 <button onClick={createNewCriteria}>Add Criteria</button>
+                <br/>
+                <br/>
                 <button onClick={doneCreating}> Finished Adding </button>
+                <br/>  
+                
             </div>
-         }           
+         }         
 
         { criterias.length !== 0 && doneAddingCriteria === false && // Displays table of all criteria
+           
             <div className="Criteria">
-                <h6>
+                <hr/>
+                <h3>
                     Grading Criteria
-                 </h6>
-      
+                 </h3>
+                
                     {criterias.map(criteria => {
                         return(
                             <div key={criteria.id}>

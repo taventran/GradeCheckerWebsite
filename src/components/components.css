@@ -69,15 +69,13 @@ table {
 
 .Criteria {
   color: white;
-  text-align: center;
-  position:fixed;
-  left: 65%;
-  top: 17%;
+  margin: auto;
+
   font-size: 150%;
   border-radius: 5%;
   width: 20%;
   
-}
+} 
 
 .tableText {
   color: white;
