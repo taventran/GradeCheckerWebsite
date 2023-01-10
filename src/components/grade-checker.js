@@ -5,7 +5,6 @@ import './components.css';
 
 
 function GradeChecker() {
-    var criteria1 = [];
 
     const [curID, setCurID] = useState("");
     const [isShown, setIsShown] = useState(false);
@@ -16,19 +15,23 @@ function GradeChecker() {
     const [gradingCriteriaWeight, setGradingCriteriaWeight] = useState("");
     const [gradeAverage, setGradeAverage] = useState("");
     const [doneAddingGrades, setDoneAddingGrades] = useState(false);
+    const [currentAverage, setCurrentAverage] = useState(0);
+    const [newGrade, setNewGrade] = useState("");
+    const [currentCriteria, setCurrentCriteria] = useState("");
+    const [numOfAssignments, setNumOfAssignments] = useState("");
+
+    const [predictedGrade, setPredictedGrade] = useState(0);
 
     useEffect(() => {
-        console.log('criterias', criterias);
+        getCurrentAverage();
     }, [criterias]);
 
     function createNewCriteria() {
         var newCriteria = {id: num, name: gradingCriteriaName.toUpperCase(), weight: gradingCriteriaWeight};
-        criteria1.push(newCriteria);
         setCriterias(criterias.concat(newCriteria));
         setNum(num + 1);
         setGradingCriteriaName("");
         setGradingCriteriaWeight("")
-        console.log(num);
     }
 
     function doneCreating() {
@@ -62,15 +65,44 @@ function GradeChecker() {
 
     const updateNewCriteria = criteriaID => {
         const tempCriterias = criterias.find((criterias) => criterias.id === criteriaID);
-        console.log(tempCriterias.id);
         let newCriterias = criterias.filter((criterias) => criterias.id !== criteriaID);
         const changeCriteria = {id: tempCriterias.id, name: tempCriterias.name, weight: tempCriterias.weight, grade:gradeAverage};
-        console.log(changeCriteria)
         newCriterias = newCriterias.concat(changeCriteria);
         setCriterias(newCriterias);
         setIsShown(false);
+        getCurrentAverage();
     }
 
+    function getCurrentAverage() {
+        let overallGrade = 0;
+        let overallWeight = 0;
+        for (let i = 0; i < criterias.length; i++) {
+            if ('grade' in criterias[i]) {
+                let curGrade = criterias[i].grade;
+                console.log("currentGrade:", curGrade);
+                let curPercentage = parseFloat(criterias[i].weight);
+                overallWeight += curPercentage;
+                console.log("currentWeight:", curPercentage);
+                overallGrade += curGrade * (curPercentage/100);
+            }
+        }
+        console.log("Grade", overallGrade);
+        console.log("Weight",overallWeight);
+        setCurrentAverage(overallGrade/overallWeight * 100);
+    }
+
+    function updateGrade() {
+        console.log(newGrade);
+        console.log(currentCriteria);
+        const tempCriterias = criterias.find((criterias) => criterias.name === currentCriteria);
+        const holdCriteria = tempCriterias[0];
+       
+        const newAvg = holdCriteria.grade + (newGrade - holdCriteria.grade)/numOfAssignments;
+
+        console.log(newAvg)
+        
+
+    }
 
     return <React.Fragment>
         { doneAddingCriteria === false &&
@@ -90,55 +122,58 @@ function GradeChecker() {
 
         { criterias.length !== 0 && doneAddingCriteria === false && // Displays table of all criteria
             <div className="Criteria">
-                <table>
-                    <h6>
-                        Grading Criteria
-                    </h6>
+                <h6>
+                    Grading Criteria
+                 </h6>
+      
                     {criterias.map(criteria => {
                         return(
                             <div key={criteria.id}>
-                                <tr className="tableText">
-                                <th className="tableText"> {criteria.name}:&nbsp; </th>
-                                <td className="tableText">    {criteria.weight}% </td>
-                                <FontAwesomeIcon className="icon" icon={faTrash} onClick= {() => removeClicked(criteria.id)} />
-                                </tr>
+                                <table>
+                                    <tbody>
+                                        <tr className="tableText">
+                                        <th className="tableText"> {criteria.name}:&nbsp; </th>
+                                        <td className="tableText">    {criteria.weight}% </td>
+                                        <FontAwesomeIcon className="icon" icon={faTrash} onClick= {() => removeClicked(criteria.id)} />
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         )
                     })}   
-                </table>
             </div>
         }  
 
         {
-            doneAddingCriteria && // Getting grade average of all materials
+            doneAddingCriteria && doneAddingGrades===false &&  // Getting grade average of all materials
             <div className="FullTable">
-                <table>
-                    <h1>
-                        Grading Criteria
-                    </h1>
-                    {criterias.map(criteria => {
-                        return(
-                            <div className="tableText2" key={criteria.id}>
-                                <tr>
-                                <FontAwesomeIcon className="icon2" icon={faEdit} onClick= { () => updateClick(criteria.id)} />
-                                <th className="tableText2"> {criteria.name}:&nbsp; </th>
-                                <td className="tableText2">    {criteria.weight}% </td>
-                                <td className="tableText2">  &nbsp; &nbsp; Grade Average: </td>
+                <h2>Grade Checker</h2>
+                {criterias.map(criteria => {
+                    return(
+                        <div className="tableText2" key={criteria.id}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <FontAwesomeIcon className="icon2" icon={faEdit} onClick= { () => updateClick(criteria.id)} />
+                                        <th className="tableText2"> {criteria.name}:&nbsp; </th>
+                                        <td className="tableText2">    {criteria.weight}% </td>
+                                        <td className="tableText2">  &nbsp; &nbsp; Grade Average: </td>
 
-                                {('grade') in criteria  === true &&
-                                    <div>
-                                    <td className="tableText2">   &nbsp; {criteria.grade} </td>
-                                    </div>
-                                }
-                                {('grade') in criteria === false &&
-                                    <td className="tableText2">  &nbsp; NONE </td>
-                                }
-                                
-                                </tr>
-                            </div>
-                        )
-                    })}   
-                </table>
+                                        {('grade') in criteria  === true &&
+                                            <div>
+                                            <td className="tableText2">   &nbsp; {criteria.grade} </td>
+                                            </div>
+                                        }
+                                        {('grade') in criteria === false &&
+                                            <td className="tableText2">  &nbsp; NONE </td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    )
+                })}   
+                <h3>Current Grade: {currentAverage.toFixed(3)}</h3>
                 {isShown && doneAddingGrades === false &&
                     <div>
                         <h3>Grade Average for {curID.name}</h3>
@@ -151,22 +186,35 @@ function GradeChecker() {
                 <br/>
                 <br/>
                 <button onClick={doneCreating}>Go back</button>
-                <button onClick={doneGrades}>Done Updating</button>
+                {/* <button onClick={doneGrades}>Calculate for new grade</button> */}
+                
             </div>
            
         }
-        { doneAddingGrades && // Getting predicted grade
+        {/* { doneAddingGrades && // Getting predicted grade
             <div className="Finals">
-                <h1>Grade Checker</h1>
-                <h3>New Criteria Grade</h3>
-                <input type="text" placeholder="which criteria"/>
-                <h3>Projected Grade</h3>
-                <input type="text" placeholder="grade"/>
+                <h1>New Grade Calculator</h1>
+                <h3>Criteria Grade</h3>
+                <select value={currentCriteria} onChange={evt => setCurrentCriteria(evt.target.value)}>
+                {criterias.map(criteria => {
+                    return(
+                        <option key={criteria.id}> {criteria.name} </option>
+        
+                    )
+                })}
+                </select>
+                <h3>Amount of Assignments Completed for Criteria</h3>
+                <input placeholder='Assignments Completed (including new grade)' value={numOfAssignments} onChange={evt => setNumOfAssignments(evt.target.value)}/>
+                <h3>New Grade</h3>
+                <input type="text" placeholder="New Grade" value={newGrade} onChange={evt => setNewGrade(evt.target.value)}/>
                 <br/>
                 <br/>
-                <button> submit </button>
+                <button onClick={doneGrades}>Go Back</button>
+                <button onClick={updateGrade}> SUBMIT </button>
+                <h2 className="Average">Predicted Grade: {predictedGrade.toFixed(3)}</h2>
+
             </div>
-        }
+        } */}
     </React.Fragment>
 }
 

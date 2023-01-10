@@ -1,7 +1,7 @@
 .App {
   border: 10px;
   text-align: center;
-  background-color: #282c34;
+  background-color: #3b3c36;
 }
 
 .App-choose {
@@ -30,8 +30,8 @@ button {
   border-radius: 25px;
   display: inline-block;
   padding: 15px 32px;
-  width: 10%;
-  font-size: 75%
+  width: 20%;
+  font-size: 1fr 2fr
 }
 
 .App-header {
@@ -43,4 +43,38 @@ button {
 
 .App-link {
   color: #61dafb;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #1a1110;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
 }
