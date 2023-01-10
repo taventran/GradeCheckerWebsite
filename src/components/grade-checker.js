@@ -138,10 +138,10 @@ function GradeChecker() {
                                 <table>
                                     <tbody>
                                         <tr className="tableText">
-                                        <FontAwesomeIcon className="icon" icon={faTrash} onClick= {() => removeClicked(criteria.id)} />
+                                        
                                         <th className="tableText"> {criteria.name}:&nbsp; </th>
                                         <td className="tableText">    {criteria.weight}% </td>
-                                       
+                                        <FontAwesomeIcon className="icon" icon={faTrash} onClick= {() => removeClicked(criteria.id)} />
                                         </tr>
                                     </tbody>
                                 </table>

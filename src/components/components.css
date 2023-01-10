@@ -47,9 +47,7 @@ table {
   display: inline-table;
 }
 
-.icon {
-  width: 80%;
-}
+
 
 .icon:hover {
   color: #5f150a;
@@ -61,10 +59,7 @@ table {
   cursor: pointer;
 }
 
-.icon2 {
-  width: 80%;
-  margin-right: 60%;
-}
+
 
 .Criteria {
   color: white;
