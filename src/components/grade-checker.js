@@ -164,7 +164,7 @@ function GradeChecker() {
                                         <FontAwesomeIcon className="icon2" icon={faEdit} onClick= { () => updateClick(criteria.id)} />
                                         <th className="tableText2"> {criteria.name}:&nbsp; </th>
                                         <td className="tableText2">    {criteria.weight}% </td>
-                                        <td className="tableText2">  &nbsp; &nbsp; Grade Average: </td>
+                                        <td className="tableText2">  &nbsp; &nbsp; Grade: </td>
 
                                         {('grade') in criteria  === true &&
                                             <div>
