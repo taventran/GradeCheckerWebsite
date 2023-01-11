@@ -154,7 +154,7 @@ function GradeChecker() {
         <div className="FullTable">
         {(isShown && doneAddingGrades === false && doneAddingCriteria === true) &&
             <div>
-                <h3>Grade Average for {curID.name}</h3>
+                <h3>Grade for {curID.name}</h3>
                 <input type="e.g. 85.7" value={gradeAverage} onChange={evt => setGradeAverage(evt.target.value)}/>
                 <br/>
                 <br/>
