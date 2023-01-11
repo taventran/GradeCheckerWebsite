@@ -24,11 +24,11 @@ function FinalsChecker() {
             <div className="Finals">
                 <h1>Final Grade Checker</h1>
                 <h3>Your current grade</h3>
-                <input placeholder="current grade" value={currentGrade} onChange={evt => setCurrentGrade(evt.target.value)}></input>
+                <input placeholder="e.g. 87.43" value={currentGrade} onChange={evt => setCurrentGrade(evt.target.value)}></input>
                 <h3>Your desired grade</h3>
-                <input placeholder="desired grade" value={desiredGrade} onChange={evt => setDesiredGrade(evt.target.value)}></input>
+                <input placeholder="e.g. 90" value={desiredGrade} onChange={evt => setDesiredGrade(evt.target.value)}></input>
                 <h3>Your final's worth</h3>
-                <input placeholder="final's worth" value={finalWorth} onChange={evt=> setFinalWorth(evt.target.value)}></input>
+                <input placeholder="e.g. 30" value={finalWorth} onChange={evt=> setFinalWorth(evt.target.value)}></input>
                 <br/>
                 <br/>
                 <button onClick={whenClick}>Calculate</button>

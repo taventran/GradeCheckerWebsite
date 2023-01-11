@@ -110,10 +110,10 @@ function GradeChecker() {
             <div className="Finals">
                 <h1>Grade Checker</h1>
                 <h3> Name of the criteria </h3>
-                <input type="text" placeholder="Name" value={gradingCriteriaName} onChange={evt => setGradingCriteriaName(evt.target.value)}/>
+                <input type="text" placeholder="e.g. test" value={gradingCriteriaName} onChange={evt => setGradingCriteriaName(evt.target.value)}/>
                 <br/>
                 <h3> Criteria's Weight </h3>
-                <input type="text" placeholder="Weight" value={gradingCriteriaWeight} onChange={evt => setGradingCriteriaWeight(evt.target.value)}/>
+                <input type="text" placeholder="e.g. 30" value={gradingCriteriaWeight} onChange={evt => setGradingCriteriaWeight(evt.target.value)}/>
                 <br/>
                 <br/>
                 <button onClick={createNewCriteria}>Add Criteria</button>
@@ -155,7 +155,7 @@ function GradeChecker() {
         {(isShown && doneAddingGrades === false && doneAddingCriteria === true) &&
             <div>
                 <h3>Grade Average for {curID.name}</h3>
-                <input type="text" value={gradeAverage} onChange={evt => setGradeAverage(evt.target.value)}/>
+                <input type="e.g. 85.7" value={gradeAverage} onChange={evt => setGradeAverage(evt.target.value)}/>
                 <br/>
                 <br/>
                 <button onClick = {() => updateNewCriteria(curID.id)}> submit </button>
