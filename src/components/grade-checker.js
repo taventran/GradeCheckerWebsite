@@ -71,6 +71,7 @@ function GradeChecker() {
         setCriterias(newCriterias);
         setIsShown(false);
         getCurrentAverage();
+        setGradeAverage("");
     }
 
     function getCurrentAverage() {
@@ -150,7 +151,20 @@ function GradeChecker() {
                     })}   
             </div>
         }  
-
+        <div className="FullTable">
+        {isShown && doneAddingGrades === false &&
+            <div>
+                <h3>Grade Average for {curID.name}</h3>
+                <input type="text" value={gradeAverage} onChange={evt => setGradeAverage(evt.target.value)}/>
+                <br/>
+                <br/>
+                <button onClick = {() => updateNewCriteria(curID.id)}> submit </button>
+                <br/>
+                <br/>
+                <hr/>
+            </div>                                
+        }
+        </div>
         {
             doneAddingCriteria && doneAddingGrades===false &&  // Getting grade average of all materials
             <div className="FullTable">
@@ -181,18 +195,8 @@ function GradeChecker() {
                     )
                 })}   
                 <h3>Current Grade: {currentAverage.toFixed(3)}</h3>
-                {isShown && doneAddingGrades === false &&
-                    <div>
-                        <h3>Grade Average for {curID.name}</h3>
-                        <input type="text" value={gradeAverage} onChange={evt => setGradeAverage(evt.target.value)}/>
-                        <br/>
-                        <br/>
-                        <button onClick = {() => updateNewCriteria(curID.id)}> submit </button>
-                    </div>                                
-                }
                 <br/>
-                <br/>
-                <button onClick={doneCreating}>Go back</button>
+                <button onClick={doneCreating}>Go Back</button>
                 {/* <button onClick={doneGrades}>Calculate for new grade</button> */}
                 
             </div>
