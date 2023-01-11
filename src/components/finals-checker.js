@@ -16,7 +16,7 @@ function FinalsChecker() {
     function whenClick() { // Calculates needed score
         let neededScore = (desiredGrade - currentGrade * (1-finalWorth/100)) / (finalWorth/100);
         console.log(neededScore);
-        setGradeRequired(neededScore);
+        setGradeRequired(neededScore.toFixed(3));
     }
 
     return (
