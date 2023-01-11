@@ -37,8 +37,8 @@ function App() {
         {display === null  &&
         <div>
             <h1 style={{color:"white"}}>Choose an option</h1>
-            <button className="choose"  onClick={clickGradeChecker}>Calculate Grade</button>
-            <button className="choose" onClick={clickFinalChecker}>Final Grade Checker</button>
+            <button className="choose"  onClick={clickGradeChecker}>Grade Calculato</button>
+            <button className="choose" onClick={clickFinalChecker}>Final Calculator</button>
           </div>
         }
 
