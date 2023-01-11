@@ -152,21 +152,18 @@ function GradeChecker() {
             </div>
         }  
         <div className="FullTable">
-        {isShown && doneAddingGrades === false &&
+        {(isShown && doneAddingGrades === false && doneAddingCriteria === true) &&
             <div>
                 <h3>Grade Average for {curID.name}</h3>
                 <input type="text" value={gradeAverage} onChange={evt => setGradeAverage(evt.target.value)}/>
                 <br/>
                 <br/>
                 <button onClick = {() => updateNewCriteria(curID.id)}> submit </button>
-                <br/>
-                <br/>
-                <hr/>
             </div>                                
         }
         </div>
         {
-            doneAddingCriteria && doneAddingGrades===false &&  // Getting grade average of all materials
+        (isShown === false && doneAddingCriteria && doneAddingGrades===false) &&  // Getting grade average of all materials
             <div className="FullTable">
                 <h2>Grade Checker</h2>
                 {criterias.map(criteria => {
