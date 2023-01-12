@@ -3,6 +3,7 @@ import './App.css';
 import FinalsCheckers from './components/finals-checker';
 import GradeChecker from './components/grade-checker';
 import About from './components/about';
+import FAQ from './components/faq';
 
 function App() {
 
@@ -17,11 +18,15 @@ function App() {
   }
 
   function clickGradeChecker() {
-    setDisplay(<GradeChecker></GradeChecker>)
+    setDisplay(<GradeChecker></GradeChecker>);
   }
 
   function clickAbout() {
-    setDisplay(<About></About>)
+    setDisplay(<About></About>);
+  }
+
+  function clickFAQ() {
+    setDisplay(<FAQ></FAQ>);
   }
 
   return (
@@ -32,6 +37,7 @@ function App() {
       <ul className="topnav">
         <li><a onClick={clickGradeChecker}>Grade Calculator</a></li>
         <li><a onClick={clickFinalChecker}>Final Calculator</a></li>
+        <li><a onClick={clickFAQ}>FAQ</a></li>
         <li><a onClick={clickAbout}>About</a></li>
       </ul>
         {display === null  &&
