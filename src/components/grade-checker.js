@@ -116,10 +116,10 @@ function GradeChecker() {
                 <input type="text" placeholder="e.g. 30" value={gradingCriteriaWeight} onChange={evt => setGradingCriteriaWeight(evt.target.value)}/>
                 <br/>
                 <br/>
-                <button onClick={createNewCriteria}>Add Criteria</button>
+                <button onClick={createNewCriteria}>Add New Criteria</button>
                 <br/>
                 <br/>
-                <button onClick={doneCreating}> Finished Adding </button>
+                <button onClick={doneCreating}> Next Step </button>
                 <br/>  
                 
             </div>
@@ -148,7 +148,8 @@ function GradeChecker() {
                                 </table>
                             </div>
                         )
-                    })}   
+                    })}
+            
             </div>
         }  
         <div className="FullTable">
@@ -194,7 +195,7 @@ function GradeChecker() {
                 <h3>Current Grade: {currentAverage.toFixed(3)}</h3>
                 <br/>
                 <button onClick={doneCreating}>Go Back</button>
-                {/* <button onClick={doneGrades}>Calculate for new grade</button> */}
+                <h5>Click on the pencil to edit grade for a criteria</h5>
                 
             </div>
            
